@@ -69,8 +69,9 @@ Sub StockInfo():
         ws.Range("Q4").NumberFormat = "0"
         
         
-            'Autofit
+        'Autofit and Number Format
         ws.Cells.EntireColumn.AutoFit
+        ws.Range("K:K").NumberFormat = "0.00%"
         
         Next ws
 
