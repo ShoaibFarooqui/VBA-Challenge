@@ -1,7 +1,14 @@
-# VBA-Challenge
-VBA demonstration with stock analysis
+# VBA-Challenge Student Notes
+//
+The Code presented is a demonstartion of stock analysis using VBA.
+//
+Two Scripts are included in the repository: One script for the alphabetized workbook and One script for the yearly workbook. Given the difference in formatting I decided to make these scripts distinct from eachother. The prior finds the bonus values over all sheets combined  (A to F). The Second code finds three seperate bonus values for each sheet respectively. Both scripts are named after their respective workbook.
+//
+The rest of this README.md file is a Copy paste of the instructions
+//
 
-Copy paste instructions
+
+
 # VBA Homework: The VBA of Wall Street
 
 ## Background
