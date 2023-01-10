@@ -1,3 +1,4 @@
+
 Sub StockInfo():
     
 'Repeat code for each sheet
@@ -16,11 +17,23 @@ Sub StockInfo():
         Dim j As Integer
         i = 2
         j = 2
+        
+        Dim total_close As Double
+        total_close = 0
+        
+        Dim total_open As Double
+        total_open = 0
+        
         While IsEmpty(ws.Cells(i, 1)) = False
+            
+            'open to end
+            total_open = total_open + ws.Cells(i, 3).Value
+            total_close = total_close + ws.Cells(i, 6).Value
             
             'get ticker symbol
             If ws.Cells(i, 1).Value <> ws.Cells(i + 1, 1).Value Then
                 ws.Cells(j, 9).Value = ws.Cells(i, 1).Value
+                ws.Cells(j, 10).Value = total_close - total_open
                 j = j + 1
             End If
             i = i + 1
@@ -45,6 +58,7 @@ Sub StockInfo():
     
             
         Wend
+        ws.Range("J:J").NumberFormat = "0.00"
         
 '        ws.Cells.EntireColumn.AutoFit
 '
@@ -111,4 +125,5 @@ Sub StockInfo():
 '    Cells.EntireColumn.AutoFit
 
 End Sub
+
 
