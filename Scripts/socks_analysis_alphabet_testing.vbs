@@ -43,34 +43,32 @@ Sub StockInfo():
                 ws.Cells(j, 11).Value = ws.Cells(j, 10).Value / total_open
                 'total Volume
                 ws.Cells(j, 12).Value = total_volume
+                
+                'Conditional Formatting +/- change
+                If ws.Cells(j, 10).Value < 0 Then
+                    ws.Cells(j, 10).Interior.ColorIndex = 22
+    
+                ElseIf ws.Cells(j, 10).Value > 0 Then
+                    ws.Cells(j, 10).Interior.ColorIndex = 43
+    
+                End If
+            
                 j = j + 1
             End If
+
+
+
+            
             total_open = 0
             total_close = 0
             total_volume = 0
             i = i + 1
-
-
-'
-'            'total volume
-'            ws.Cells(i, 12).Value = ws.Cells(i, 7).Value
-'
-'            'Conditional Formatting +/- change
-'            If ws.Cells(i, 10).Value < 0 Then
-'                ws.Cells(i, 10).Interior.ColorIndex = 22
-'
-'            ElseIf ws.Cells(i, 10).Value > 0 Then
-'                ws.Cells(i, 10).Interior.ColorIndex = 43
-'
-'            End If
-            
-    
             
         Wend
         ws.Range("J:J").NumberFormat = "0.00"
         ws.Range("K:K").NumberFormat = "0.00%"
+        Cells.EntireColumn.AutoFit
         
-'        ws.Cells.EntireColumn.AutoFit
 '
 '        'Search for Bonus Values (biggest % increase, % decrease, Volume)
 '        Dim inc As Double
@@ -102,7 +100,7 @@ Sub StockInfo():
 '        End If
 '
 
-        
+
     Next ws
         
 '    Sheets(1).Select
@@ -131,8 +129,7 @@ Sub StockInfo():
 '    Range("Q4").NumberFormat = "0"
 '
 '
-    AutoFit
-    Cells.EntireColumn.AutoFit
+
 
 End Sub
 
