@@ -24,25 +24,33 @@ Sub StockInfo():
         Dim total_open As Double
         total_open = 0
         
+        Dim total_volume As LongLong
+        total_volume = 0
+        
         While IsEmpty(ws.Cells(i, 1)) = False
             
             'open to end
             total_open = total_open + ws.Cells(i, 3).Value
             total_close = total_close + ws.Cells(i, 6).Value
+            total_volume = total_volume + ws.Cells(i, 7).Value
             
             'get ticker symbol
             If ws.Cells(i, 1).Value <> ws.Cells(i + 1, 1).Value Then
                 ws.Cells(j, 9).Value = ws.Cells(i, 1).Value
                 'get yearly change
                 ws.Cells(j, 10).Value = total_close - total_open
+                'percent change
+                ws.Cells(j, 11).Value = ws.Cells(j, 10).Value / total_open
+                'total Volume
+                ws.Cells(j, 12).Value = total_volume
                 j = j + 1
             End If
             total_open = 0
             total_close = 0
+            total_volume = 0
             i = i + 1
 
-'            'percent change from open to close
-'            ws.Cells(i, 11).Value = ws.Cells(i, 10).Value / ws.Cells(i, 3).Value
+
 '
 '            'total volume
 '            ws.Cells(i, 12).Value = ws.Cells(i, 7).Value
@@ -60,6 +68,7 @@ Sub StockInfo():
             
         Wend
         ws.Range("J:J").NumberFormat = "0.00"
+        ws.Range("K:K").NumberFormat = "0.00%"
         
 '        ws.Cells.EntireColumn.AutoFit
 '
@@ -122,8 +131,8 @@ Sub StockInfo():
 '    Range("Q4").NumberFormat = "0"
 '
 '
-'        'Autofit
-'    Cells.EntireColumn.AutoFit
+    AutoFit
+    Cells.EntireColumn.AutoFit
 
 End Sub
 
