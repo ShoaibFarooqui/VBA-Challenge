@@ -33,13 +33,14 @@ Sub StockInfo():
             'get ticker symbol
             If ws.Cells(i, 1).Value <> ws.Cells(i + 1, 1).Value Then
                 ws.Cells(j, 9).Value = ws.Cells(i, 1).Value
+                'get yearly change
                 ws.Cells(j, 10).Value = total_close - total_open
                 j = j + 1
             End If
+            total_open = 0
+            total_close = 0
             i = i + 1
-'            'open to end (yearly) change
-'            ws.Cells(i, 10).Value = ws.Cells(i, 6).Value - ws.Cells(i, 3).Value
-'
+
 '            'percent change from open to close
 '            ws.Cells(i, 11).Value = ws.Cells(i, 10).Value / ws.Cells(i, 3).Value
 '
